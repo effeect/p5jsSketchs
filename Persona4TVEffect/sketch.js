@@ -1,8 +1,8 @@
+let boolean = false;
 let increment = 0;
-let rectanglesStor = [];
 
 function setup() {
-    createCanvas(innerWidth, innerHeight);
+    createCanvas(1024, 1024);
     rectMode(CENTER);
 
     let test = new Rectangles()
@@ -10,19 +10,20 @@ function setup() {
     angleMode(DEGREES)
 }
 
-
+let rectanglesStor = [];
 
 
 function draw() {
     background(255)
     noFill()
-    stroke(0);
+    stroke(255);
 
     increment++;
 
-    if (increment > 10) {
+    if (increment > 100) {
         rectanglesStor.push(new Rectangles())
         increment = 0;
+        boolean = !boolean
     }
 
     for (var i = 0; i < rectanglesStor.length; i++) {
@@ -52,12 +53,12 @@ class Rectangles {
         console.log(this.size)
         push()
         translate(width / 2, height / 2)
-        rotate(this.rotation)
-        rect(0, 0, this.size, this.size * 2)
+        fill(this.size / 4)
+        ellipse(0, 0, this.size, this.size)
         pop()
     }
     gone() {
-        return this.size > width;
+        return this.size > 1050;
     }
 
 }
